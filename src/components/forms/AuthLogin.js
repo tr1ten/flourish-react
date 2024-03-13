@@ -61,7 +61,7 @@ const JWTLogin = ({ loginProp, ...others }) => {
                     const response = await axios.post('https://api.flourish.us/auth/all_login', { email: values?.email, password: values?.password });
                     const { access_token, data } = response.data;
                     if (!response.data.msg) {
-                        window.location.replace(`https://www.app.flourish.us/dashboard?token=${access_token}`)
+                        window.location.replace(`https://www.app.flourish.us/welcome?token=${access_token}`)
                     }
                     else {
                         setErrors({ submit: response?.data?.msg })

@@ -17,15 +17,9 @@ function App() {
       {loginOpen &&
         <PopUp open={loginOpen} setclose={setLoginOpen} element={<Signin setclose={setLoginOpen} setclose2={setRegisterOpen} />} icon />
       }
-      <Button variant="contained" sx={{
-        background: '#000',
-        "&.MuiButtonBase-root:hover": {
-          bgcolor: "#000"
-        },
-        borderRadius: 0
-      }} onClick={() => setLoginOpen(true)}>
+      <a className='cta nav-cta w-button' onClick={() => setLoginOpen(true)}>
         Sign In
-      </Button>
+      </a>
     </BrowserRouter>
   );
 }
@@ -39,27 +33,28 @@ function RegisterForm() {
       {registerOpen &&
         <PopUp open={registerOpen} setclose={setRegisterOpen} element={<Register setclose={setRegisterOpen} setclose2={setLoginOpen} />} icon />
       }
-      <Button variant="contained" sx={{
-        background: '#000',
-        "&.MuiButtonBase-root:hover": {
-          bgcolor: "#000"
-        },
-        borderRadius: 0
-      }} onClick={() => setRegisterOpen(true)}>
+      <a className='cta light w-button' onClick={() => setRegisterOpen(true)}>
         Register
-      </Button>
+      </a>
     </BrowserRouter>
   );
 }
 
+for(const doc of document.querySelectorAll('[id=react-target-signin]')) {
+  ReactDOM.render(
+    React.createElement(App, {}, null),
+    doc
+  );
+}
+for(const doc of document.querySelectorAll('[id=react-target-register]')) {
+  ReactDOM.render(
+    React.createElement(RegisterForm, {}, null),
+    doc
+  );
+}
 
-ReactDOM.render(
-  React.createElement(App, {}, null),
-  document.getElementById('react-target-signin')
-);
-
-ReactDOM.render(
-  React.createElement(RegisterForm, {}, null),
-  document.getElementById('react-target-register')
-);
+// ReactDOM.render(
+//   React.createElement(RegisterForm, {}, null),
+//   document.getElementById('react-target-register')
+// );
 
