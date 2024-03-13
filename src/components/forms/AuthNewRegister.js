@@ -98,23 +98,23 @@ function AuthNewRegister(props) {
                                                 onBlur={handleBlur}
                                                 onChange={handleChange}
                                                 inputProps={{ className: Styles.textfield }}
-                                                endAdornment={
-                                                    <InputAdornment position="end">
-                                                        <Tooltip
-                                                            title="Lorem ipsum dolor sit amet."
-                                                            arrow placement='right-start'
-                                                        >
-                                                            <IconButton
-                                                                aria-label="toggle password visibility"
-                                                                edge="end"
-                                                                size="large"
-                                                            >
-                                                                <IconInfoCircle />
-                                                            </IconButton>
-                                                        </Tooltip>
+                                            // endAdornment={
+                                            //     <InputAdornment position="end">
+                                            //         <Tooltip
+                                            //             title="Lorem ipsum dolor sit amet."
+                                            //             arrow placement='right-start'
+                                            //         >
+                                            //             <IconButton
+                                            //                 aria-label="toggle password visibility"
+                                            //                 edge="end"
+                                            //                 size="large"
+                                            //             >
+                                            //                 <IconInfoCircle />
+                                            //             </IconButton>
+                                            //         </Tooltip>
 
-                                                    </InputAdornment>
-                                                }
+                                            //     </InputAdornment>
+                                            // }
                                             />
                                         </FormControl>
                                         <div className={Styles.error}>
@@ -143,7 +143,7 @@ function AuthNewRegister(props) {
                                                 endAdornment={
                                                     <InputAdornment position="end">
                                                         <Tooltip
-                                                            title="Lorem ipsum dolor sit amet."
+                                                            title="please remove https://www. from the domain name. For example, use apple.com not https://www.apple.com"
                                                             arrow placement='right-start'
                                                         >
                                                             <IconButton

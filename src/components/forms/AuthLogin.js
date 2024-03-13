@@ -83,6 +83,7 @@ const JWTLogin = ({ loginProp, ...others }) => {
                                 <OutlinedInput
                                     placeholder='Email Address'
                                     type="email"
+                                    sx={{ borderColor: '#000' }}
                                     value={values.email}
                                     name="email"
                                     onBlur={handleBlur}
