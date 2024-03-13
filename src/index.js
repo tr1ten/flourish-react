@@ -34,7 +34,22 @@ function RegisterForm() {
         <PopUp open={registerOpen} setclose={setRegisterOpen} element={<Register setclose={setRegisterOpen} setclose2={setLoginOpen} />} icon />
       }
       <a className='cta light w-button' onClick={() => setRegisterOpen(true)}>
-        Register
+        Register for FREE
+      </a>
+    </BrowserRouter>
+  );
+}
+function RegisterNowForm() {
+  const [loginOpen, setLoginOpen] = React.useState(false);
+  const [registerOpen, setRegisterOpen] = React.useState(false);
+
+  return (
+    <BrowserRouter>
+      {registerOpen &&
+        <PopUp open={registerOpen} setclose={setRegisterOpen} element={<Register setclose={setRegisterOpen} setclose2={setLoginOpen} />} icon />
+      }
+      <a className='cta light w-button' onClick={() => setRegisterOpen(true)}>
+        Register now
       </a>
     </BrowserRouter>
   );
@@ -49,6 +64,12 @@ for(const doc of document.querySelectorAll('[id=react-target-signin]')) {
 for(const doc of document.querySelectorAll('[id=react-target-register]')) {
   ReactDOM.render(
     React.createElement(RegisterForm, {}, null),
+    doc
+  );
+}
+for(const doc of document.querySelectorAll('[id=react-target-register-now]')) {
+  ReactDOM.render(
+    React.createElement(RegisterNowForm, {}, null),
     doc
   );
 }
