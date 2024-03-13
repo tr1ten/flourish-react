@@ -1,42 +1,30 @@
-import React, {Component} from 'react'
+import React from 'react'
 import ReactDOM from 'react-dom'
-import { useState } from 'react';
-import Button from 'react-bootstrap/Button';
-import Modal from 'react-bootstrap/Modal';
+
+import PopUp from './components/dialogBox';
+import Signin from './components/modals/signin';
+
+import { BrowserRouter } from 'react-router-dom'
 
 function App() {
-  const [show, setShow] = useState(false);
-
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [loginOpen, setLoginOpen] = React.useState(false);
+  const [registerOpen, setRegisterOpen] = React.useState(false);
 
   return (
-    <>
-      <Button variant="primary" onClick={handleShow}>
+    <BrowserRouter>
+      {loginOpen &&
+        <PopUp open={loginOpen} setclose={setLoginOpen} element={<Signin setclose={setLoginOpen} setclose2={setRegisterOpen} />} icon />
+      }
+      <button variant="primary" onClick={() => setLoginOpen(true)}>
         Sign In
-      </Button>
-
-      <Modal show={show} onHide={handleClose}>
-        <Modal.Header closeButton>
-          <Modal.Title>Modal heading</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>Woohoo, you are reading this text in a modal!</Modal.Body>
-        <Modal.Footer>
-          <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button>
-        </Modal.Footer>
-      </Modal>
-    </>
+      </button>
+    </BrowserRouter>
   );
 }
 
 
 ReactDOM.render(
-React.createElement(App, {}, null),
-document.getElementById('react-target-signin')
+  React.createElement(App, {}, null),
+  document.getElementById('react-target-signin')
 );
 
