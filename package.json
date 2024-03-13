@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "webpack-dev-server --config ./webpack.config.js --mode development --progress --color --port 3000",
+    "start": "webpack-dev-server --config ./webpack.config.js --mode development --progress --color --port 3003",
     "build": "webpack"
   },
   "author": "",
@@ -16,12 +16,16 @@
     "@emotion/styled": "^11.10.5",
     "@mui/icons-material": "^5.15.12",
     "@mui/material": "^5.11.4",
+    "@tabler/icons": "^1.119.0",
+    "axios": "^1.6.7",
     "css-loader": "^6.10.0",
     "formik": "^2.2.9",
+    "framer-motion": "^11.0.12",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.6.2",
     "sass": "^1.71.1",
+    "sass-loader": "^14.1.1",
     "style-loader": "^3.3.4",
     "yup": "^0.32.11"
   },

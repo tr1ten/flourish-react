@@ -101,5 +101,9 @@
     .button {
         background: #000;
         border-radius: 0;
+
+        &:hover {
+            background: #000 !important;
+        }
     }
 }

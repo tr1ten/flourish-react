@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Styles from "../../styles/login.module.scss";
+import axios from 'axios';
 
 // material-ui
 import {
@@ -11,6 +11,7 @@ import {
     FormControl,
     FormControlLabel,
     FormHelperText,
+    Link,
     Grid,
     IconButton,
     InputAdornment,
@@ -24,6 +25,7 @@ import * as Yup from 'yup';
 import { Formik } from 'formik';
 
 // project imports
+import AnimateButton from '../AnimateButton';
 // import AnimateButton from 'ui-component/extended/AnimateButton';
 // import useAuth from 'hooks/useAuth';
 
@@ -34,9 +36,6 @@ import VisibilityOff from '@mui/icons-material/VisibilityOff';
 // ===============================|| JWT LOGIN ||=============================== //
 
 const JWTLogin = ({ loginProp, ...others }) => {
-
-    // const { login } = useAuth();
-
     const [showPassword, setShowPassword] = React.useState(false);
     const handleClickShowPassword = () => {
         setShowPassword(!showPassword);
@@ -59,15 +58,14 @@ const JWTLogin = ({ loginProp, ...others }) => {
             })}
             onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                 try {
-                    // const res = await login(values.email, values.password);
-                    // if (res.msg) {
-                    //     setErrors({ submit: res.msg })
-                    // }
-                    // else {
-                    //     setStatus({ success: true });
-                    //     setSubmitting(false);
-                    // }
-
+                    const response = await axios.post('https://api.flourish.us/auth/all_login', { email: values?.email, password: values?.password });
+                    const { access_token, data } = response.data;
+                    if (!response.data.msg) {
+                        window.location.replace(`https://www.app.flourish.us/dashboard?token=${access_token}`)
+                    }
+                    else {
+                        setErrors({ submit: response?.data?.msg })
+                    }
                 } catch (err) {
                     console.error(err);
                     setStatus({ success: false });
@@ -145,15 +143,14 @@ const JWTLogin = ({ loginProp, ...others }) => {
                                 /> */}
                                 </Grid>
                                 <Grid item>
-                                    <Typography
+                                    <Link
                                         variant="subtitle1"
-                                        component={Link}
-                                        to='/forgot-password'
+                                        href='https://www.app.flourish.us/forgot-password'
                                         color="#000"
                                         sx={{ textDecoration: 'none' }}
                                     >
                                         Forgot Password?
-                                    </Typography>
+                                    </Link>
                                 </Grid>
                             </Grid>
                         </div>
@@ -164,11 +161,11 @@ const JWTLogin = ({ loginProp, ...others }) => {
                             </Box>
                         )}
                         <Box sx={{ mt: 2 }}>
-                            <Button>
-                                <Button className={Styles.button} color="secondary" disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
+                            <AnimateButton>
+                                <Button className={Styles.button} disabled={isSubmitting} fullWidth size="large" type="submit" variant="contained">
                                     Sign In
                                 </Button>
-                            </Button>
+                            </AnimateButton>
                         </Box>
                     </div>
                 </form>

@@ -18,7 +18,7 @@ function Signin(props) {
             <DialogContent>
                 <AuthLogin />
             </DialogContent>
-            <p className={Styles.signin}>Don't have an account? <button onClick={handleClick}>Register</button></p>
+            {/* <p className={Styles.signin}>Don't have an account? <button onClick={handleClick}>Register</button></p> */}
         </div>
     )
 }
