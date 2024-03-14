@@ -80,6 +80,96 @@ function RegisterForm() {
   );
 }
 
+function RegisterGetStartedForm() {
+  const [loginOpen, setLoginOpen] = React.useState(false);
+  const [RegisterPopUp, setRegisterPopUP] = React.useState(false);
+  const [registerOpen, setRegisterOpen] = React.useState(false);
+  const [checked, setChecked] = React.useState();
+
+  const handleClick = () => {
+    setRegisterPopUP(false);
+    setRegisterOpen(true);
+  }
+
+  const RegisterComponent = () => {
+    return (
+      <>
+        <DialogContent>
+          <FormGroup>
+            <FormControlLabel required control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
+              label="Yes! I am an HR Executive, or other qualified administrator, and I’m authorized to add my Company and its employees to Flourish!"
+            />
+          </FormGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button sx={{ color: "#000" }} disabled={!checked} onClick={handleClick}>Continue</Button>
+          <Button sx={{ color: "red" }} onClick={() => setRegisterPopUP(false)}>Close</Button>
+        </DialogActions>
+      </>
+    )
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      {RegisterPopUp &&
+        <PopUp open={RegisterPopUp} setclose={setRegisterPopUP} element={<RegisterComponent />} />
+      }
+      {registerOpen &&
+        <PopUp open={registerOpen} setclose={setRegisterOpen} element={<Register setclose={setRegisterOpen} setclose2={setLoginOpen} />} icon />
+      }
+      <a style={{width:"100%"}} className='cta w-button' onClick={() => setRegisterPopUP(true)}>
+        Get started
+      </a>
+    </ThemeProvider >
+  );
+}
+
+function RegisterNowForm() {
+  const [loginOpen, setLoginOpen] = React.useState(false);
+  const [RegisterPopUp, setRegisterPopUP] = React.useState(false);
+  const [registerOpen, setRegisterOpen] = React.useState(false);
+  const [checked, setChecked] = React.useState();
+
+  const handleClick = () => {
+    setRegisterPopUP(false);
+    setRegisterOpen(true);
+  }
+
+  const RegisterComponent = () => {
+    return (
+      <>
+        <DialogContent>
+          <FormGroup>
+            <FormControlLabel required control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
+              label="Yes! I am an HR Executive, or other qualified administrator, and I’m authorized to add my Company and its employees to Flourish!"
+            />
+          </FormGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button sx={{ color: "#000" }} disabled={!checked} onClick={handleClick}>Continue</Button>
+          <Button sx={{ color: "red" }} onClick={() => setRegisterPopUP(false)}>Close</Button>
+        </DialogActions>
+      </>
+    )
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      {RegisterPopUp &&
+        <PopUp open={RegisterPopUp} setclose={setRegisterPopUP} element={<RegisterComponent />} />
+      }
+      {registerOpen &&
+        <PopUp open={registerOpen} setclose={setRegisterOpen} element={<Register setclose={setRegisterOpen} setclose2={setLoginOpen} />} icon />
+      }
+      <a className='cta light w-button' onClick={() => setRegisterPopUP(true)}>
+        Register now
+      </a>
+    </ThemeProvider >
+  );
+}
+
+
+
 for (const doc of document.querySelectorAll('[id=react-target-signin]')) {
   ReactDOM.render(
     React.createElement(App, {}, null),
@@ -98,6 +188,15 @@ for (const doc of document.querySelectorAll('[id=react-target-register-now]')) {
     doc
   );
 }
+
+for (const doc of document.querySelectorAll('[id=react-target-get-started]')) {
+  ReactDOM.render(
+    React.createElement(RegisterGetStartedForm, {}, null),
+    doc
+  );
+}
+
+
 
 // ReactDOM.render(
 //   React.createElement(RegisterForm, {}, null),
