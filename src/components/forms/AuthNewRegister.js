@@ -55,13 +55,14 @@ function AuthNewRegister(props) {
                 onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
                     try {
                         const response = await axios.post('https://api.flourish.us/auth/signup', values);
+                        console.log(response)
                         if (response?.data?.success) {
-                            const { saveData } = response;
+                            const { saveData } = response?.data;
                             if (saveData) {
                                 window.location.replace(`https://www.app.flourish.us/${saveData.company_name}/create-password/${saveData._uuid}`)
                             }
                             else {
-                                props.msg(response.msg);
+                                props.msg(response?.data?.msg);
                                 props.setActiveForm(3)
                             }
 
