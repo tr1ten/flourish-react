@@ -52,8 +52,8 @@ function RegisterForm() {
       <>
         <DialogContent>
           <FormGroup>
-            <FormControlLabel required control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
-              label="Yes! I am an HR Executive, or other qualified administrator, and I’m authorized to add my Company and its employees to Flourish!"
+            <FormControlLabel  control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
+              label="I’m an HR Executive, or other qualified administrator, and authorized to add my Company and its employees to Flourish."
             />
           </FormGroup>
         </DialogContent>
@@ -96,8 +96,8 @@ function RegisterGetStartedForm() {
       <>
         <DialogContent>
           <FormGroup>
-            <FormControlLabel required control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
-              label="Yes! I am an HR Executive, or other qualified administrator, and I’m authorized to add my Company and its employees to Flourish!"
+            <FormControlLabel  control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
+              label="I’m an HR Executive, or other qualified administrator, and authorized to add my Company and its employees to Flourish."
             />
           </FormGroup>
         </DialogContent>
@@ -140,8 +140,8 @@ function RegisterNowForm() {
       <>
         <DialogContent>
           <FormGroup>
-            <FormControlLabel required control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
-              label="Yes! I am an HR Executive, or other qualified administrator, and I’m authorized to add my Company and its employees to Flourish!"
+            <FormControlLabel  control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
+              label="I’m an HR Executive, or other qualified administrator, and authorized to add my Company and its employees to Flourish."
             />
           </FormGroup>
         </DialogContent>
@@ -170,6 +170,71 @@ function RegisterNowForm() {
 
 
 
+// Nav
+
+function NavSigin() {
+  const [loginOpen, setLoginOpen] = React.useState(false);
+  const [registerOpen, setRegisterOpen] = React.useState(false);
+
+  return (
+    <ThemeProvider theme={theme}>
+      {loginOpen &&
+        <PopUp open={loginOpen} setclose={setLoginOpen} element={<Signin setclose={setLoginOpen} setclose2={setRegisterOpen} />} icon />
+      }
+      <a className='dropdown-link-2 w-dropdown-link' onClick={() => setLoginOpen(true)}>
+        Sign In
+      </a>
+    </ThemeProvider>
+  );
+}
+
+function RegisterNavForm() {
+  const [loginOpen, setLoginOpen] = React.useState(false);
+  const [RegisterPopUp, setRegisterPopUP] = React.useState(false);
+  const [registerOpen, setRegisterOpen] = React.useState(false);
+  const [checked, setChecked] = React.useState();
+
+  const handleClick = () => {
+    setRegisterPopUP(false);
+    setRegisterOpen(true);
+  }
+
+  const RegisterComponent = () => {
+    return (
+      <>
+        <DialogContent>
+          <FormGroup>
+            <FormControlLabel  control={<Checkbox checked={checked} onChange={(event) => setChecked(!checked)} />}
+              label="I’m an HR Executive, or other qualified administrator, and authorized to add my Company and its employees to Flourish."
+            />
+          </FormGroup>
+        </DialogContent>
+        <DialogActions>
+          <Button sx={{ color: "#000" }} disabled={!checked} onClick={handleClick}>Continue</Button>
+          <Button sx={{ color: "red" }} onClick={() => setRegisterPopUP(false)}>Close</Button>
+        </DialogActions>
+      </>
+    )
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      {RegisterPopUp &&
+        <PopUp open={RegisterPopUp} setclose={setRegisterPopUP} element={<RegisterComponent />} />
+      }
+      {registerOpen &&
+        <PopUp open={registerOpen} setclose={setRegisterOpen} element={<Register setclose={setRegisterOpen} setclose2={setLoginOpen} />} icon />
+      }
+      <a className='dropdown-link-2 w-dropdown-link' onClick={() => setRegisterPopUP(true)}>
+        Register
+      </a>
+    </ThemeProvider >
+  );
+}
+
+
+
+
 for (const doc of document.querySelectorAll('[id=react-target-signin]')) {
   ReactDOM.render(
     React.createElement(App, {}, null),
@@ -192,6 +257,20 @@ for (const doc of document.querySelectorAll('[id=react-target-register-now]')) {
 for (const doc of document.querySelectorAll('[id=react-target-get-started]')) {
   ReactDOM.render(
     React.createElement(RegisterGetStartedForm, {}, null),
+    doc
+  );
+}
+
+for (const doc of document.querySelectorAll('[id=react-target-nav-signin]')) {
+  ReactDOM.render(
+    React.createElement(NavSigin, {}, null),
+    doc
+  );
+}
+
+for (const doc of document.querySelectorAll('[id=react-target-nav-register]')) {
+  ReactDOM.render(
+    React.createElement(RegisterNavForm, {}, null),
     doc
   );
 }
