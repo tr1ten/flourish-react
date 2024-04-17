@@ -211,7 +211,11 @@ function AuthNewRegister(props) {
                       <MenuItem value="less than 100">Less than 100</MenuItem>
                       <MenuItem value="100-500">100-500</MenuItem>
                       <MenuItem value="500-1000">500-1000</MenuItem>
-                      <MenuItem value="1000+">1000+</MenuItem>
+                      <MenuItem value="1000-5000">1000-5000</MenuItem>
+
+                      <MenuItem value="5000-10000">5000-10000</MenuItem>
+
+                      <MenuItem value="10000+">10000+</MenuItem>
                     </TextField>
                     <div className={Styles.error}>
                       {touched.company_size && errors.company_size && (
