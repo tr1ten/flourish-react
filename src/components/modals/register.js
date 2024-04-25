@@ -16,7 +16,7 @@ function Register(props) {
     <div className={Styles.loginform}>
       {activeform > 2 ? (
         <div className={Styles.msg_dialog}>
-          <h2 className={Styles.msg_heading}>Thank You!</h2>
+          <h2 className={Styles.msg_heading}>Thank You For Registering!</h2>
           <p className={Styles.msg}>{msg}</p>
         </div>
       ) : (
@@ -28,14 +28,12 @@ function Register(props) {
 
           <div className={Styles.stepper}>
             <div
-              className={`${Styles.step} ${
-                activeform > 0 ? Styles.active : ""
-              }`}
+              className={`${Styles.step} ${activeform > 0 ? Styles.active : ""
+                }`}
             ></div>
             <div
-              className={`${Styles.step} ${
-                activeform > 1 ? Styles.active : ""
-              }`}
+              className={`${Styles.step} ${activeform > 1 ? Styles.active : ""
+                }`}
             ></div>
             {/* <div className={`${Styles.step} ${activeform>2?Styles.active:""}`}></div> */}
           </div>
